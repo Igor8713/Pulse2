@@ -1,0 +1,52 @@
+@import 'base/variables';
+
+*{
+    font-family: 'Museo Sans Cyrl', sans-serif;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    max-width: 950px;
+    margin: 0 auto;
+    position: relative;
+}
+
+@media(max-width: 992px){
+    .container{
+        max-width: 720px;
+    }
+}
+
+@media(max-width: 768px){
+    .container{
+        max-width: 540px;
+    }
+}
+
+@media(max-width: 576px){
+    .container{
+        max-width: none;
+        width: 100%;
+        padding: 0px 12px;
+    }
+}
+
+h1, h2{
+    margin: 0px;
+}
+
+@import 'blocks/promo';
+@import 'blocks/header';
+@import 'blocks/button';
+@import 'blocks/advants';
+@import 'blocks/title';
+@import 'blocks/consult';
+@import 'blocks/form';
+@import 'blocks/carousel';
+@import 'blocks/catalog';
+@import 'blocks/reviews';
+@import 'blocks/footer';
