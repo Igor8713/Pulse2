@@ -22,8 +22,10 @@ document.querySelector('.carousel__bNext').addEventListener('click', function(){
 });
 
 
-let tabs = document.querySelectorAll('.catalog__tab');
-let contents = document.querySelectorAll('.catalog__content');
+/*------------catalog--------------*/
+
+const tabs = document.querySelectorAll('.catalog__tab');
+const contents = document.querySelectorAll('.catalog__content');
 
 for(let i = 0; i < tabs.length; i++){
     tabs[i].addEventListener('click', function(){
@@ -38,9 +40,9 @@ for(let i = 0; i < tabs.length; i++){
 }
 
 
-let links = document.querySelectorAll('.catalogCard__link');
-let backs = document.querySelectorAll('.catalogCard__back');
-let wrapper = document.querySelectorAll('.catalogCard__wrapper');
+const links = document.querySelectorAll('.catalogCard__link');
+const backs = document.querySelectorAll('.catalogCard__back');
+const wrapper = document.querySelectorAll('.catalogCard__wrapper');
 
 function Cards(buttons){
     for(let i = 0; i < buttons.length; i++){
@@ -53,3 +55,56 @@ function Cards(buttons){
 
 Cards(links);
 Cards(backs);
+
+
+/*-------------modal---------------------*/
+const buttCons = document.querySelectorAll('.button_consultation');
+const buttCard = document.querySelectorAll('.button_card');
+const cardTitle = document.querySelectorAll('.catalogCard__subtitle');
+const buttClose = document.querySelectorAll('.modal__close');
+const modal = document.querySelectorAll('#consultation, #order, #thanks');
+
+function fadeIn(modal, time){
+    document.querySelector('.blackout').style.opacity = 0;
+    modal.style.opacity = 0;
+    document.querySelector('.blackout').style.display = 'block';
+    modal.style.display = 'block';
+    document.querySelector('.blackout').style.transition = `${time}ms opacity`;
+    modal.style.transition = `${time}ms opacity`;
+    setTimeout(() => {
+        document.querySelector('.blackout').style.opacity = 1;
+        modal.style.opacity = 1;
+    }, 10);
+}
+
+function fadeOut(modal, time){
+    document.querySelector('.blackout').style.opacity = 1;
+    modal.style.opacity = 1;
+    document.querySelector('.blackout').style.transition = `${time}ms opacity`;
+    modal.style.transition = `${time}ms opacity`;
+    document.querySelector('.blackout').style.opacity = 0;
+    modal.style.opacity = 0;
+    setTimeout(() => {
+        document.querySelector('.blackout').style.display = 'none';
+        modal.style.display = 'none';
+    }, time);
+}
+
+for(let i = 0; i < buttCons.length; i++){
+    buttCons[i].addEventListener('click', function(){
+        fadeIn(document.querySelector('#consultation'), 600);
+    });
+}
+
+for(let i = 0; i < buttCard.length; i++){
+    buttCard[i].addEventListener('click', function(){
+        document.querySelector('#order .modal__desc').textContent = cardTitle[i].textContent;
+        fadeIn(document.querySelector('#order'), 600);
+    });
+}
+
+for(let i = 0; i < buttClose.length; i++){
+    buttClose[i].addEventListener('click', function(){
+        fadeOut(modal[i], 600);
+    })
+}
