@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/ico.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+    <link rel="stylesheet" href="css/tiny-slider.min.css">
     <link rel="stylesheet" href="css/style.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js" defer></script>
+    <script src="js/tiny-slider.min.js" defer></script>
+    <script src="js/just-validate.min.js" defer></script>
     <script src="js/script.js" defer></script>
 </head>
 <body>
@@ -88,10 +89,10 @@
         <div class="container">
             <h2 class="title title_consult">Получите бесплатную консультацию<br> по подбору пульсометра </h2>
             <div class="consult__subtitle">Просто заполните форму заявки<br> и мы перезвоним вам в течении 10 минут</div>
-            <form action="#" class="form">
-                <input type="text" name="name" placeholder="Ваше имя" required>
-                <input type="tel" name="phone" placeholder="Ваш телефон" required>
-                <input type="email" name="email" placeholder="Ваш E-mail" required>
+            <form action="#" class="form" id="consultForm">
+                <div><input type="text" name="name" placeholder="Ваше имя"></div>
+                <div><input type="tel" name="phone" placeholder="Ваш телефон"></div>
+                <div><input type="email" name="email" placeholder="Ваш E-mail"></div>
                 <button class="button button_submit">заказать кОНСУЛЬТАЦИЮ</button>
             </form>
         </div>
@@ -422,9 +423,9 @@
             <div class="modal__desc">и мы перезвоним вам в течении 10 минут</div>
             <div class="modal__attent">Пожалуйста переверните ваше устройство, чтобы заполнить форму</div>
             <form action="#" class="form form_modal">
-                <input type="text" name="name" placeholder="Ваше имя" required>
-                <input type="tel" name="phone" placeholder="Ваш телефон" required>
-                <input type="email" name="email" placeholder="Ваш E-mail" required>
+                <div><input type="text" name="name" placeholder="Ваше имя"></div>
+                <div><input type="tel" name="phone" placeholder="Ваш телефон"></div>
+                <div><input type="email" name="email" placeholder="Ваш E-mail"></div>
                 <button class="button button_submit">заказать кОНСУЛЬТАЦИЮ</button>
             </form>
         </div>
@@ -434,9 +435,9 @@
             <div class="modal__desc">Пульсометр Polar FT1</div>
             <div class="modal__attent">Пожалуйста переверните ваше устройство, чтобы заполнить форму</div>
             <form action="#" class="form form_modal">
-                <input type="text" name="name" placeholder="Ваше имя" required>
-                <input type="tel" name="phone" placeholder="Ваш телефон" required>
-                <input type="email" name="email" placeholder="Ваш E-mail" required>
+                <div><input type="text" name="name" placeholder="Ваше имя"></div>
+                <div><input type="tel" name="phone" placeholder="Ваш телефон"></div>
+                <div><input type="email" name="email" placeholder="Ваш E-mail"></div>
                 <button class="button button_submit">Купить</button>
             </form>
         </div>

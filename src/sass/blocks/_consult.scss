@@ -8,6 +8,16 @@
         font-weight: 500;
         line-height: 30px;
     }
+    .form__errorInput{
+        border: 2px solid #d96161;
+    }
+    .form__errorMessage{
+        margin-top: 5px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 16px;
+        color: #d96161 !important;
+    }
 }
 
 @media(max-width: 576px){

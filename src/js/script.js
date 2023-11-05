@@ -108,3 +108,55 @@ for(let i = 0; i < buttClose.length; i++){
         fadeOut(modal[i], 600);
     })
 }
+
+
+/*-----------------Validation------------------------*/
+
+function validForms(form){
+    const validator = new JustValidate(form);
+    
+    validator
+        .addField(form + ' input[type=text]', [
+            {
+                rule: 'required',
+                errorMessage: 'Пожалуйста, введите свое имя',
+            },
+            {
+                rule: 'minLength',
+                value: 2,
+                errorMessage: 'Введите 2 символов',
+            },
+        ],
+        {
+            errorFieldCssClass: ['form__errorInput'],
+            errorLabelCssClass: ['form__errorMessage'],
+        })
+        .addField(form + ' input[type=tel]', [
+            {
+                rule: 'required',
+                errorMessage: 'Пожалуйста, введите свой номер телефона',
+            },
+        ],
+        {
+            errorFieldCssClass: ['form__errorInput'],
+            errorLabelCssClass: ['form__errorMessage'],
+        })
+        .addField(form + ' input[type=email]', [
+            {
+                rule: 'required',
+                errorMessage: 'Пожалуйста, введите свою почту',
+            },
+            {
+                rule: 'email',
+                errorMessage: 'Неправильно введен адрес почты',
+            },
+        ],
+        {
+            errorFieldCssClass: ['form__errorInput'],
+            errorLabelCssClass: ['form__errorMessage'],
+        });
+}
+
+validForms('#consultForm');
+validForms('#consultation form');
+validForms('#order form');

@@ -45,11 +45,19 @@
     &__attent{
         display: none;
     }
+    .form__errorInput{
+        border: 1px solid #b81111;
+    }
+    .form__errorMessage{
+        margin-top: 5px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 16px;
+    }
 }
 
 #consultation, #order, #thanks{
     display: none;
-    opacity: 0;
 }
 
 @media(max-width: 576px){
@@ -67,7 +75,7 @@
     }
 }
 
-@media(max-height: 415px){
+@media(max-height: 510px){
     .modal_mini{
         .modal__title, .modal__desc, .form_modal{
             display: none;
