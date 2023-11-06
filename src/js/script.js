@@ -116,7 +116,7 @@ function validForms(form){
     const validator = new JustValidate(form);
     
     validator
-        .addField(form + ' input[type=text]', [
+        .addField(form + ' input[name=name]', [
             {
                 rule: 'required',
                 errorMessage: 'Пожалуйста, введите свое имя',
@@ -131,7 +131,7 @@ function validForms(form){
             errorFieldCssClass: ['form__errorInput'],
             errorLabelCssClass: ['form__errorMessage'],
         })
-        .addField(form + ' input[type=tel]', [
+        .addField(form + ' input[name=phone]', [
             {
                 rule: 'required',
                 errorMessage: 'Пожалуйста, введите свой номер телефона',
@@ -141,7 +141,7 @@ function validForms(form){
             errorFieldCssClass: ['form__errorInput'],
             errorLabelCssClass: ['form__errorMessage'],
         })
-        .addField(form + ' input[type=email]', [
+        .addField(form + ' input[name=email]', [
             {
                 rule: 'required',
                 errorMessage: 'Пожалуйста, введите свою почту',
@@ -160,3 +160,10 @@ function validForms(form){
 validForms('#consultForm');
 validForms('#consultation form');
 validForms('#order form');
+
+/*-----------------Mask for phone-------------------------*/
+
+const inputPhone = document.querySelectorAll('input[name=phone]');
+let im = new Inputmask('+7 (999) 999-99-99');
+
+im.mask(inputPhone);
