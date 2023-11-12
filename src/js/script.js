@@ -62,36 +62,29 @@ const buttCons = document.querySelectorAll('.button_consultation');
 const buttCard = document.querySelectorAll('.button_card');
 const cardTitle = document.querySelectorAll('.catalogCard__subtitle');
 const buttClose = document.querySelectorAll('.modal__close');
-const modal = document.querySelectorAll('#consultation, #order, #thanks');
+const modalWindow = document.querySelectorAll('#consultation, #order, #thanks');
 
 function fadeIn(modal, time){
-    document.querySelector('.blackout').style.opacity = 0;
     modal.style.opacity = 0;
-    document.querySelector('.blackout').style.display = 'block';
     modal.style.display = 'block';
-    document.querySelector('.blackout').style.transition = `${time}ms opacity`;
     modal.style.transition = `${time}ms opacity`;
     setTimeout(() => {
-        document.querySelector('.blackout').style.opacity = 1;
         modal.style.opacity = 1;
     }, 10);
 }
 
 function fadeOut(modal, time){
-    document.querySelector('.blackout').style.opacity = 1;
     modal.style.opacity = 1;
-    document.querySelector('.blackout').style.transition = `${time}ms opacity`;
     modal.style.transition = `${time}ms opacity`;
-    document.querySelector('.blackout').style.opacity = 0;
     modal.style.opacity = 0;
     setTimeout(() => {
-        document.querySelector('.blackout').style.display = 'none';
         modal.style.display = 'none';
     }, time);
 }
 
 for(let i = 0; i < buttCons.length; i++){
     buttCons[i].addEventListener('click', function(){
+        fadeIn(document.querySelector('.blackout'), 600);
         fadeIn(document.querySelector('#consultation'), 600);
     });
 }
@@ -99,24 +92,28 @@ for(let i = 0; i < buttCons.length; i++){
 for(let i = 0; i < buttCard.length; i++){
     buttCard[i].addEventListener('click', function(){
         document.querySelector('#order .modal__desc').textContent = cardTitle[i].textContent;
+        fadeIn(document.querySelector('.blackout'), 600);
         fadeIn(document.querySelector('#order'), 600);
     });
 }
 
 for(let i = 0; i < buttClose.length; i++){
     buttClose[i].addEventListener('click', function(){
-        fadeOut(modal[i], 600);
+        fadeOut(document.querySelector('.blackout'), 600);
+        fadeOut(modalWindow[i], 600);
     })
 }
 
 
-/*-----------------Validation------------------------*/
+/*-----------------Validation and mailer------------------------*/
+
+const inputs = document.querySelectorAll('form input');
 
 function validForms(form){
-    const validator = new JustValidate(form);
+    var validator = new JustValidate(document.querySelector(form));
     
     validator
-        .addField(form + ' input[name=name]', [
+        .addField(document.querySelector(form + ' input[name=name]'), [
             {
                 rule: 'required',
                 errorMessage: 'Пожалуйста, введите свое имя',
@@ -131,7 +128,7 @@ function validForms(form){
             errorFieldCssClass: ['form__errorInput'],
             errorLabelCssClass: ['form__errorMessage'],
         })
-        .addField(form + ' input[name=phone]', [
+        .addField(document.querySelector(form + ' input[name=phone]'), [
             {
                 rule: 'required',
                 errorMessage: 'Пожалуйста, введите свой номер телефона',
@@ -141,7 +138,7 @@ function validForms(form){
             errorFieldCssClass: ['form__errorInput'],
             errorLabelCssClass: ['form__errorMessage'],
         })
-        .addField(form + ' input[name=email]', [
+        .addField(document.querySelector(form + ' input[name=email]'), [
             {
                 rule: 'required',
                 errorMessage: 'Пожалуйста, введите свою почту',
@@ -154,12 +151,29 @@ function validForms(form){
         {
             errorFieldCssClass: ['form__errorInput'],
             errorLabelCssClass: ['form__errorMessage'],
+        })
+        .onSuccess(function(e){
+            e.preventDefault();
+            fetch('mailer/smart.php',{
+                method: 'POST',
+                body: new FormData(document.querySelector(form)),
+            }).then(function(){
+                for(let i = 0; i < inputs.length; i++){
+                    inputs[i].value = '';
+                }
+                fadeOut(document.querySelector('#consultation'), 600);
+                fadeOut(document.querySelector('#order'), 600);
+                fadeIn(document.querySelector('.blackout'), 600);
+                fadeIn(document.querySelector('#thanks'), 600);
+            });
+            return false;
         });
 }
 
 validForms('#consultForm');
 validForms('#consultation form');
 validForms('#order form');
+
 
 /*-----------------Mask for phone-------------------------*/
 
