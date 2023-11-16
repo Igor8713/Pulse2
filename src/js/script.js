@@ -181,3 +181,35 @@ const inputPhone = document.querySelectorAll('input[name=phone]');
 let im = new Inputmask('+7 (999) 999-99-99');
 
 im.mask(inputPhone);
+
+
+/*---------------------Scrolling-----------------------------*/
+
+window.addEventListener('scroll', function(){
+    if(this.scrollY > 1600){
+        if(document.querySelector('.pageup').style.display != 'block'){
+            fadeIn(document.querySelector('.pageup'), 400);
+        }
+    } else{
+        if(document.querySelector('.pageup').style.display != 'none'){
+            fadeOut(document.querySelector('.pageup'), 400);
+        }
+    }
+});
+
+
+/* const navLinks = document.querySelectorAll("a"); 
+
+function smoothScroll(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href");
+    const targetElement = document.querySelector(targetId);
+  
+    if (targetElement) { 
+      targetElement.scrollIntoView({ behavior: "smooth", });
+    }
+  }
+
+navLinks.forEach((link) => {
+    link.addEventListener("click", smoothScroll);
+}); */
