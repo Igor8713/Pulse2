@@ -12,6 +12,12 @@
     &__icon{
         display: block;
         margin: 0 auto;
+        &_animate{
+            animation: pulsar 1s ease infinite;
+            &:hover{
+                animation-play-state: paused;
+            }
+        }
     }
     &__title{
         margin-top: 30px;
