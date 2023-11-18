@@ -197,7 +197,6 @@ window.addEventListener('scroll', function(){
     }
 });
 
-
 /* const navLinks = document.querySelectorAll("a"); 
 
 function smoothScroll(e) {
@@ -213,3 +212,6 @@ function smoothScroll(e) {
 navLinks.forEach((link) => {
     link.addEventListener("click", smoothScroll);
 }); */
+
+
+new WOW().init();       //activate wow.js
