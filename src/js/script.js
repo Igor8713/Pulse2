@@ -64,9 +64,9 @@ const cardTitle = document.querySelectorAll('.catalogCard__subtitle');
 const buttClose = document.querySelectorAll('.modal__close');
 const modalWindow = document.querySelectorAll('#consultation, #order, #thanks');
 
-function fadeIn(modal, time){
+function fadeIn(modal, time, disp){
     modal.style.opacity = 0;
-    modal.style.display = 'block';
+    modal.style.display = disp || 'block';
     modal.style.transition = `${time}ms opacity`;
     setTimeout(() => {
         modal.style.opacity = 1;

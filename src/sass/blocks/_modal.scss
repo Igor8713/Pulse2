@@ -1,7 +1,8 @@
 .blackout{
     display: none;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    padding: 10px 0;
     position: fixed;
     top: 0;
     background-color: rgba(0, 0, 0, 0.56);
@@ -75,7 +76,21 @@
     }
 }
 
-@media(max-height: 510px){
+@media(max-height: 450px) and (orientation: portrait){
+    .blackout{
+        overflow: auto;
+    }
+
+    .modal{
+        margin: 0 auto;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+    }
+}
+
+@media(max-height: 450px) and (orientation: landscape){
     .modal_mini{
         .modal__title, .modal__desc, .form_modal{
             display: none;
