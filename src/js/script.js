@@ -6,6 +6,7 @@ const slider = tns({
     controls: false,
     nav: true,
     navPosition: "bottom",
+    swipeAngle: false,
     responsive: {
         769: {
             nav: false

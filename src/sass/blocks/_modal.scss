@@ -76,7 +76,7 @@
     }
 }
 
-@media(max-height: 450px) and (orientation: portrait){
+@media(max-height: 450px){
     .blackout{
         overflow: auto;
     }
@@ -87,16 +87,5 @@
         top: auto;
         left: auto;
         transform: none;
-    }
-}
-
-@media(max-height: 450px) and (orientation: landscape){
-    .modal_mini{
-        .modal__title, .modal__desc, .form_modal{
-            display: none;
-        }
-        .modal__attent{
-            display: block;
-        }
     }
 }
